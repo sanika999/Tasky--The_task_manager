@@ -32,7 +32,7 @@
 </head>
 
 
-<body>
+<body onload="loadInitialTaskCards()">
   <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
@@ -44,7 +44,7 @@
       <div class="modal-body">
         <div class="mb-3">
           <label for="imageurl" class="form-label">Image Url</label>
-          <input type="url" class="form-control" id="imageurl" placeholder="https://example.images.com/image.png"/>
+          <input type="url" class="form-control" id="imageurl" placeholder="https://example.images.com/image.png" />
         </div>
         <div class="mb-3">
           <label for="tasktitle" class="form-label">Task Title</label>
@@ -61,7 +61,7 @@
       </div>
       <div class="modal-footer justify-content-start">
         <button type="button" class="btn btn-secondary rounded-pill" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary rounded-pill" onclick="saveChanges()">Save changes</button>
+        <button type="button" class="btn btn-primary rounded-pill" data-bs-dismiss="modal" onclick="saveChanges()">Save changes</button>
       </div>
     </div>
   </div>
@@ -71,7 +71,7 @@
     <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm">
       <div class="container-fluid">
         <h1 class="navbar-brand fw-bold">
-          <a class="" href="#">TasKy</a>
+          <a class="" href="#" contenteditable="true">TasKy</a>
         </h1>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -93,7 +93,7 @@
         <div class="row justify-content-center">
           <div class="col-md-6">
             <div class="input-group mb-3 shadow-lg">
-              <input type="text" class="form-control" placeholder="Search Task" aria-label="Search Task" aria-describedby="basic-addon2">
+              <input type="text" class="form-control" placeholder="Search Task" aria-label="Search Task" aria-describedby="basic-addon2" />
               <span class="input-group-text" id="basic-addon2" ><i class="fas fa-search"></i></span>
             </div> 
           </div>
@@ -101,7 +101,7 @@
       </section>         
     
       <section>
-        <div class="row">
+        <div class="row task__container">
           <div class="col-md-6 col-lg-4">
             <div class="card text-center">
               <div class="card-header d-flex justify-content-end gap-2">
