@@ -44,7 +44,7 @@ const newCard = ({
 const Shubham = ({ id, taskTitle, taskDescription, imageUrl }) => {
   return ` <div id=${id}>
   <img src=${imageUrl} alt="bg image" class="img-fluid"style="width:1000%;" />
-  <h2 class="my-3">${taskTitle}</h2>
+  <h2 class="my-3 mt-1">${taskTitle}</h2>
   <p class="lead">
   ${taskDescription}
   </p></div>`;
