@@ -1,6 +1,6 @@
 // Parent element to store cards
 const taskContainer = document.querySelector(".task__container");
-
+const taskModal = document.querySelector(".task__modal__body");
 // Global Store
 let globalStore = [];
 
@@ -33,12 +33,23 @@ const newCard = ({
     <span class="badge bg-primary">${taskType}</span>
   </div>
   <div class="card-footer text-muted">
-    <button type="button" id=${id} class="btn btn-outline-primary float-end">
+    <button type="button" id=${id} class="btn btn-outline-primary float-end" data-bs-toggle="modal" data-bs-target="#showTask" onclick="openTask.apply(this, arguments)">
       Open Task
     </button>
   </div>
 </div>
 </div>`;
+
+
+const Shubham = ({ id, taskTitle, taskDescription, imageUrl }) => {
+  return ` <div id=${id}>
+  <img src=${imageUrl} alt="bg image" class="img-fluid"style="width:1000%;" />
+  <h2 class="my-3">${taskTitle}</h2>
+  <p class="lead">
+  ${taskDescription}
+  </p></div>`;
+};
+
 
 const loadInitialTaskCards = () => {
   // access localstorage
@@ -77,6 +88,14 @@ const saveChanges = () => {
   // add to localstorage
   updateLocalStorage();
 };
+const openTask = (event) => {
+  if (!event) event = window.event;
+
+  const getTask = globalStore.filter(({ id }) => id === event.target.id);
+  console.log(getTask)
+  taskModal.innerHTML = Shubham(getTask[0]);
+};
+
 
 const deleteCard = (event) => {
   // id
@@ -170,6 +189,9 @@ const saveEditchanges = (event) => {
   taskTitle.setAttribute("contenteditable", "false");
   taskDescription.setAttribute("contenteditable", "false");
   taskType.setAttribute("contenteditable", "false");
-  submitButton.removeAttrribute("onclick");
-  submitButton.innerHTML = "Open task";
+  submitButton.setAttribute("onclick", "openTask.apply(this, arguments)");
+  submitButton.setAttribute("data-bs-toggle", "modal");
+  submitButton.setAttribute("data-bs-target", "#showTask");
+  submitButton.innerHTML = "Open Task";
+  
 };
